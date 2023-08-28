@@ -5,17 +5,12 @@ import { getIpData } from "../utils";
 
 export default function SearchBar() {
   const context = useContext(Context);
-  const isSmallScreen = window.innerWidth < 1024;
 
   return (
     <div className="flex pb-5 lg:pb-[2.7rem]">
       <input
         type="text"
-        placeholder={
-          isSmallScreen
-            ? "Search for any IP address"
-            : "Search for any IP address or domain"
-        }
+        placeholder={"Search for any IP address"}
         className="w-[13.5rem] lg:w-[27.4rem] h-11 lg:h-[3.2rem] rounded-l-2xl p-5 text-sm font-semibold lg:font-normal"
         onChange={(e) => context.setInputData(e.target.value)}
       />
