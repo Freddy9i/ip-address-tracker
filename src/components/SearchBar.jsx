@@ -22,26 +22,16 @@ export default function SearchBar() {
       <div
         className="bg-black w-11 lg:w-[3.3rem] rounded-r-2xl flex items-center justify-center"
         onClick={() => {
-          // Check if the input is empty, if it is, fetch the IP address of the user
-          var ipToFetch = 'check';
-          if (context.inputData !== "") {
-            ipToFetch = context.inputData;
-          }
-
-          getIpData(ipToFetch)
+          getIpData(context.inputData)
             .then((response) => response.json())
             .then((data) =>
-              !data.hasOwnProperty("success")
+              !data.hasOwnProperty("error")
                 ? context.setIpData({
                     ip: data.ip,
                     location:
-                      data.country_name +
-                      ", " +
-                      data.region_name +
-                      ", " +
-                      data.city,
-                    language: data.location.languages[0].name,
-                    zipcode: data.zip,
+                      data.country_name + ", " + data.region + ", " + data.city,
+                    postalCode: data.postal,
+                    isp: data.org,
                     lat: data.latitude,
                     lon: data.longitude,
                   })

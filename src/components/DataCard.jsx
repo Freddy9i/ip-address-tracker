@@ -19,15 +19,15 @@ export default function DataCard() {
         </p>
       </span>
       <span className="pb-2 lg:grow flex flex-col items-center lg:items-start lg:pl-7">
-        <p className="text-[0.65rem] lg:pb-2 font-bold text-gray-500">LANGUAGE</p>
+        <p className="text-[0.65rem] lg:pb-2 font-bold text-gray-500">POSTAL CODE</p>
         <p className="text-lg lg:text-xl text-center lg:text-start font-bold">
-          {ipData.language}
+          {ipData.postalCode}
         </p>
       </span>
       <span className="lg:grow flex flex-col items-center lg:items-start lg:pl-11">
-        <p className="text-[0.65rem] lg:pb-2 font-bold text-gray-500">ZIP CODE</p>
+        <p className="text-[0.65rem] lg:pb-2 font-bold text-gray-500">ISP</p>
         <p className="text-lg lg:text-xl text-center lg:text-start font-bold">
-          {ipData.zipcode}
+          {ipData.isp}
         </p>
       </span>
     </div>

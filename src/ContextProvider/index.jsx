@@ -9,23 +9,23 @@ export default function ContextProvider ({ children }) {
   const [ipData, setIpData] = useState({
     ip: "N/A",
     location: "N/A",
-    language: "N/A",
-    zipcode: "N/A",
+    postalCode: "N/A",
+    isp: "N/A",
     lat: 0,
     lon: 0
   });
 
   useEffect(() => {
-    getIpData('check')
+    getIpData("")
       .then((response) => response.json())
-      .then((data) =>
-        !data.hasOwnProperty("success")
+      .then((data) => 
+        !data.hasOwnProperty("error")
           ? setIpData({
               ip: data.ip,
               location:
-                data.country_name + ", " + data.region_name + ", " + data.city,
-              language: data.location.languages[0].name,
-              zipcode: data.zip,
+                data.country_name + ", " + data.region + ", " + data.city,
+              postalCode: data.postal,
+              isp: data.org,
               lat: data.latitude,
               lon: data.longitude,
             })
