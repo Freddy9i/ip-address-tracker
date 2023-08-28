@@ -12,7 +12,7 @@ export default function Background() {
   return (
     <>
       <img
-        className="overflow-hidden object-cover w-screen h-80 lg:h-[15.4rem]"
+        className="overflow-hidden object-cover w-screen h-[15rem] lg:h-[15.4rem]"
         src={isSmallScreen ? '/pattern-bg-mobile.png' : '/pattern-bg-desktop.png'}
         alt="img"
       />

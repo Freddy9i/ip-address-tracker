@@ -9,24 +9,29 @@ export default function ContextProvider ({ children }) {
   const [ipData, setIpData] = useState({
     ip: "N/A",
     location: "N/A",
-    timezone: "N/A",
-    isp: "N/A",
+    language: "N/A",
+    zipcode: "N/A",
     lat: 0,
     lon: 0
   });
 
   useEffect(() => {
-    getIpData(inputData)
-            .then(response => response.json())
-            .then(data => data.status === "success" ? setIpData({
-              ip: data.query,
-              location: data.country+", "+data.regionName+", "+data.city,
-              timezone: data.timezone,
-              isp: data.isp,
-              lat: data.lat,
-              lon: data.lon
-            }) : alert("Invalid IP Address"))
-  }, [])
+    getIpData('check')
+      .then((response) => response.json())
+      .then((data) =>
+        !data.hasOwnProperty("success")
+          ? setIpData({
+              ip: data.ip,
+              location:
+                data.country_name + ", " + data.region_name + ", " + data.city,
+              language: data.location.languages[0].name,
+              zipcode: data.zip,
+              lat: data.latitude,
+              lon: data.longitude,
+            })
+          : alert("Invalid IP Address")
+      );
+  }, []);
 
   const contextValues = {
     inputData,
